@@ -33,8 +33,8 @@ def login(user,password):
         code = get_code(location)
     except:
         return 0,0
-    #print("access_code获取成功！")
-    #print(code)
+    print("access_code获取成功！")
+    print(code)
      
     url2 = "https://account.huami.com/v2/client/login"
     data2 = {
@@ -49,11 +49,11 @@ def login(user,password):
         } 
     r2 = requests.post(url2,data=data2,headers=headers).json()
     login_token = r2["token_info"]["login_token"]
-    #print("login_token获取成功！")
-    #print(login_token)
+    print("login_token获取成功！")
+    print(login_token)
     userid = r2["token_info"]["user_id"]
-    #print("userid获取成功！")
-    #print(userid)
+    print("userid获取成功！")
+    print(userid)
  
     return login_token,userid
  
@@ -115,8 +115,8 @@ def get_app_token(login_token):
     url = f"https://account-cn.huami.com/v1/client/app_tokens?app_name=com.xiaomi.hm.health&dn=api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com&login_token={login_token}"
     response = requests.get(url,headers=headers).json()
     app_token = response['token_info']['app_token']
-    #print("app_token获取成功！")
-    #print(app_token)
+    print("app_token获取成功！")
+    print(app_token)
     return app_token
     
 # 推送server
